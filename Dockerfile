@@ -23,25 +23,6 @@ COPY ./package* /src/
 
 WORKDIR /src
 
-# Install build-time requirements, where compilation is needed
-RUN apt-get install -yqq \
-      build-essential \
-      python \
-    && \
-    npm i && \
-    # Perform extensive cleanup
-    apt-get remove -y \
-      build-essential \
-      python \
-    && \
-    apt-get autoclean -y && \
-    apt-get autoremove -y && \
-    rm -rf /var/lib/{cache,log}/ && \
-    rm -rf /var/lib/apt/lists/*.lz4 && \
-    rm -rf /tmp/* /var/tmp/* && \
-    rm -rf /usr/share/doc/ && \
-    rm -rf /usr/share/man/
-
 COPY ./src/* /src/
 
 CMD ["/src/startup.sh"]
