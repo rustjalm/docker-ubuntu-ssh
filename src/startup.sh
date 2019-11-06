@@ -4,7 +4,7 @@ mkdir /var/run/sshd
 
 # create an sudo-enabled user
 echo "User: $USER Pass: $PASS"
-useradd --create-home --shell /bin/bash --user-group --groups adm,sudo $USER
+useradd -u 14 --create-home --shell /bin/bash --user-group --groups adm,sudo $USER
 echo "$USER:$PASS" | chpasswd
 
 /usr/sbin/sshd
