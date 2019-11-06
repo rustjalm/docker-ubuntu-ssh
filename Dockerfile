@@ -19,9 +19,6 @@ RUN apt-get update && apt-mark hold initscripts udev plymouth mountall && \
       ca-certificates \
       curl
 
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
-    apt-get install nodejs
-
 COPY ./package* /src/
 
 WORKDIR /src
